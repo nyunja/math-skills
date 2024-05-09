@@ -65,13 +65,16 @@ func sortList(a []string) []string {
 }
 
 func Median(a []string) float64 {
+	a = sortList(a)
 	var median float64
 	if len(a)%2 == 0 {
-		num1 := Atoi(a[len(a)])
-		num2 := Atoi(a[len(a)+1])
+		index := (len(a)/2)-1
+		num1 := Atoi(a[index])
+		num2 := Atoi(a[index+1])
 		median = (float64(num1) + float64(num2)) / 2
 	} else {
-		median = float64(Atoi(a[len(a)+1]))
+		index := (len(a)/2)-1
+		median = float64(Atoi(a[index+1]))
 	}
 	return median
 }
@@ -114,11 +117,11 @@ func Itoa(n int) string {
 		n = n * -1
 	}
 	for i := 0; n/10 > 0; i++ {
-		result = string(n%10+'0') + result
+		result = string(rune(n%10+'0')) + result
 		n /= 10
 	}
 	if n == 0 {
-		result = string(n+'0') + result
+		result = string(rune(n+'0')) + result
 	}
 	return sign + result
 }

@@ -21,6 +21,16 @@ func TestMedian(t *testing.T){
 	}
 }
 
+func TestVariance(t *testing.T){
+	result := Variance([]string{"19","11", "15"}, 15)
+	var expected float64 = 0
+	if result != expected {
+		t.Errorf("Error: expected %v got %v\n", expected, result)
+		t.Errorf("Try again")
+		return
+	}
+}
+
 func TestSortList(t *testing.T){
 	result := sortList([]string{"19","11", "15"})
 	var expected []string = []string{"11","15", "19"}

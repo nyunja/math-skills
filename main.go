@@ -1,6 +1,9 @@
 package main
 
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 	if len(os.Args) != 2 {
@@ -22,6 +25,10 @@ func main() {
 		return
 	}
 	numbers := splitString(string(content), "\n")
+	numbers = sortList(numbers)
+	mean := Average(numbers)
+	variance := Variance(numbers, mean)
+	fmt.Println(variance)
 	handleStats(numbers)
 }
 
@@ -65,7 +72,6 @@ func sortList(a []string) []string {
 }
 
 func Median(a []string) float64 {
-	a = sortList(a)
 	var median float64
 	if len(a)%2 == 0 {
 		index := (len(a)/2)-1
@@ -77,6 +83,19 @@ func Median(a []string) float64 {
 		median = float64(Atoi(a[index+1]))
 	}
 	return median
+}
+
+func Variance(a []string, mean float64) float64 {
+	var total float64
+	var result float64
+	for _, n := range a {
+		num := float64(Atoi(n))
+		num = num - mean
+		num = num * num
+		total += num 
+	}
+	result = total/float64(len(a))
+	return result
 }
 
 func Atoi(s string) int {

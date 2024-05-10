@@ -24,41 +24,64 @@ func main() {
 		os.Stdout.WriteString("Error: " + fileName + " is empty")
 		return
 	}
-	numbers := splitString(string(content), "\n")
-	numbers = sortList(numbers)
+	
+	numStr := splitString(string(content), "\r\n")
+	
+	numStr = sortList(numStr)
+	numbers := toFloat(numStr)
+	
 	mean := Average(numbers)
+	median := Median(numbers)
 	variance := Variance(numbers, mean)
 	stdDev := standardDev(variance)
-	fmt.Println(stdDev)
-	fmt.Println(variance)
-	handleStats(numbers)
+	os.Stdout.WriteString("Average: ")
+	os.Stdout.WriteString(Itoa(int(mean)) + "\n")
+	os.Stdout.WriteString("Median: ")
+	os.Stdout.WriteString(Itoa(int(median)) + "\n")
+	os.Stdout.WriteString("Variance: ")
+	os.Stdout.WriteString(Itoa(int(variance)) + "\n")
+	os.Stdout.WriteString("Standard Deviation: ")
+	os.Stdout.WriteString(Itoa(int(stdDev)) + "\n")
+	// fmt.Println(stdDev)
+	// fmt.Println(variance)
+	// handleStats(numbers)
 }
 
 func splitString(s string, sep string) []string {
 	result := []string{}
 	token := ""
-	for i := 0; i < len(s)-len(sep); i++ {
-		if s[i:len(sep)] == sep {
+	for i := 0; i < len(s); i++ {
+		if i < len(s)-len(sep) && s[i:i+len(sep)] == sep {
 			result = append(result, token)
 			token = ""
+			i = i+len(sep)-1
 		} else {
 			token += string(s[i])
 		}
 	}
 	result = append(result, token)
-	token = ""
 	return result
 }
 
-func handleStats(a []string) {
+func toFloat(a []string) []float64 {
+	var result []float64
+	for _, num := range a {
+		result = append(result, float64(Atoi(num)))
+	}
+	return result
 }
+// func handleStats(a []string) {
+// }
 
-func Average(numbers []string) float64 {
+func Average(numbers []float64) float64 {
 	var result float64
 	for _, n := range numbers {
-		result += float64(Atoi(n))
+		result += n
 	}
+	fmt.Printf("%d\n", result)
+	fmt.Printf("%d\n", len(numbers))
 	average := result / float64(len(numbers))
+	fmt.Printf("%d\n", average)
 	return average
 }
 
@@ -73,26 +96,25 @@ func sortList(a []string) []string {
 	return a
 }
 
-func Median(a []string) float64 {
+func Median(a []float64) float64 {
 	var median float64
 	if len(a)%2 == 0 {
 		index := (len(a) / 2) - 1
-		num1 := Atoi(a[index])
-		num2 := Atoi(a[index+1])
+		num1 := a[index]
+		num2 := a[index+1]
 		median = (float64(num1) + float64(num2)) / 2
 	} else {
 		index := (len(a) / 2) - 1
-		median = float64(Atoi(a[index+1]))
+		median = a[index+1]
 	}
 	return median
 }
 
-func Variance(a []string, mean float64) float64 {
+func Variance(a []float64, mean float64) float64 {
 	var total float64
 	var result float64
 	for _, n := range a {
-		num := float64(Atoi(n))
-		num = num - mean
+		num := n - mean
 		num = num * num
 		total += num
 	}
@@ -150,7 +172,7 @@ func Itoa(n int) string {
 		result = string(rune(n%10+'0')) + result
 		n /= 10
 	}
-	if n == 0 {
+	if n/10 == 0 {
 		result = string(rune(n+'0')) + result
 	}
 	return sign + result

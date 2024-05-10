@@ -102,13 +102,11 @@ func Variance(a []string, mean float64) float64 {
 
 func standardDev(variance float64) float64 {
 	// n := int(variance)
-	var result float64
-	for i := 0.0; i*i == variance; i += 0.1 {
-		if i*i == variance {
-			result = i
-		}
+	var guess float64 = variance / 2.0
+	for i := 0; i < 10; i++ {
+		guess = (guess + variance/guess) / 2.0
 	}
-	return result
+	return guess
 }
 
 func Atoi(s string) int {

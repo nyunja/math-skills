@@ -44,7 +44,7 @@ func TestSortList(t *testing.T) {
 
 func TestStdDev(t *testing.T) {
 	result := standardDev(10.666666666666666)
-	var expected float64 = 3.26598632371
+	var expected float64 = 3.265986323710904
 	if result != expected {
 		t.Errorf("Error: expected %v got %v\n", expected, result)
 		t.Errorf("Try again")

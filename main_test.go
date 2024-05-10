@@ -2,8 +2,8 @@ package main
 
 import "testing"
 
-func TestAverage(t *testing.T){
-	result := Average([]string{"19","11"})
+func TestAverage(t *testing.T) {
+	result := Average([]string{"19", "11"})
 	var expected float64 = 15
 	if result != expected {
 		t.Errorf("Try again")
@@ -11,8 +11,8 @@ func TestAverage(t *testing.T){
 	}
 }
 
-func TestMedian(t *testing.T){
-	result := Median([]string{"19","11", "15"})
+func TestMedian(t *testing.T) {
+	result := Median([]string{"19", "11", "15"})
 	var expected float64 = 15
 	if result != expected {
 		t.Errorf("Expected %v got %v\n", expected, result)
@@ -21,9 +21,9 @@ func TestMedian(t *testing.T){
 	}
 }
 
-func TestVariance(t *testing.T){
-	result := Variance([]string{"19","11", "15"}, 15)
-	var expected float64 = 0
+func TestVariance(t *testing.T) {
+	result := Variance([]string{"19", "11", "15"}, 15)
+	var expected float64 = 10.666666666666666
 	if result != expected {
 		t.Errorf("Error: expected %v got %v\n", expected, result)
 		t.Errorf("Try again")
@@ -31,14 +31,23 @@ func TestVariance(t *testing.T){
 	}
 }
 
-func TestSortList(t *testing.T){
-	result := sortList([]string{"19","11", "15"})
-	var expected []string = []string{"11","15", "19"}
-	for i := 0; i<len(expected); i++ {
+func TestSortList(t *testing.T) {
+	result := sortList([]string{"19", "11", "15"})
+	var expected []string = []string{"11", "15", "19"}
+	for i := 0; i < len(expected); i++ {
 		if result[i] != expected[i] {
 			t.Errorf("Try again")
 			return
 		}
 	}
-	
+}
+
+func TestStdDev(t *testing.T) {
+	result := standardDev(10.666666666666666)
+	var expected float64 = 3.26598632371
+	if result != expected {
+		t.Errorf("Error: expected %v got %v\n", expected, result)
+		t.Errorf("Try again")
+		return
+	}
 }

@@ -28,6 +28,8 @@ func main() {
 	numbers = sortList(numbers)
 	mean := Average(numbers)
 	variance := Variance(numbers, mean)
+	stdDev := standardDev(variance)
+	fmt.Println(stdDev)
 	fmt.Println(variance)
 	handleStats(numbers)
 }
@@ -74,12 +76,12 @@ func sortList(a []string) []string {
 func Median(a []string) float64 {
 	var median float64
 	if len(a)%2 == 0 {
-		index := (len(a)/2)-1
+		index := (len(a) / 2) - 1
 		num1 := Atoi(a[index])
 		num2 := Atoi(a[index+1])
 		median = (float64(num1) + float64(num2)) / 2
 	} else {
-		index := (len(a)/2)-1
+		index := (len(a) / 2) - 1
 		median = float64(Atoi(a[index+1]))
 	}
 	return median
@@ -92,9 +94,20 @@ func Variance(a []string, mean float64) float64 {
 		num := float64(Atoi(n))
 		num = num - mean
 		num = num * num
-		total += num 
+		total += num
 	}
-	result = total/float64(len(a))
+	result = total / float64(len(a))
+	return result
+}
+
+func standardDev(variance float64) float64 {
+	// n := int(variance)
+	var result float64
+	for i := 0.0; i*i == variance; i += 0.1 {
+		if i*i == variance {
+			result = i
+		}
+	}
 	return result
 }
 

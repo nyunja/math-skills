@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 )
 
@@ -24,12 +23,12 @@ func main() {
 		os.Stdout.WriteString("Error: " + fileName + " is empty")
 		return
 	}
-	
+
 	numStr := splitString(string(content), "\r\n")
-	
+
 	numStr = sortList(numStr)
 	numbers := toFloat(numStr)
-	
+
 	mean := Average(numbers)
 	median := Median(numbers)
 	variance := Variance(numbers, mean)
@@ -54,7 +53,7 @@ func splitString(s string, sep string) []string {
 		if i < len(s)-len(sep) && s[i:i+len(sep)] == sep {
 			result = append(result, token)
 			token = ""
-			i = i+len(sep)-1
+			i = i + len(sep) - 1
 		} else {
 			token += string(s[i])
 		}
@@ -70,6 +69,7 @@ func toFloat(a []string) []float64 {
 	}
 	return result
 }
+
 // func handleStats(a []string) {
 // }
 
@@ -78,10 +78,7 @@ func Average(numbers []float64) float64 {
 	for _, n := range numbers {
 		result += n
 	}
-	fmt.Printf("%d\n", result)
-	fmt.Printf("%d\n", len(numbers))
 	average := result / float64(len(numbers))
-	fmt.Printf("%d\n", average)
 	return average
 }
 

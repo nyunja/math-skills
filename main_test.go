@@ -3,7 +3,7 @@ package main
 import "testing"
 
 func TestAverage(t *testing.T) {
-	result := Average([]string{"19", "11"})
+	result := Average([]float64{19.0, 11.0, 15.0})
 	var expected float64 = 15
 	if result != expected {
 		t.Errorf("Try again")
@@ -12,7 +12,7 @@ func TestAverage(t *testing.T) {
 }
 
 func TestMedian(t *testing.T) {
-	result := Median([]string{"19", "11", "15"})
+	result := Median(toFloat(sortList(([]string{"19", "11", "15"}))))
 	var expected float64 = 15
 	if result != expected {
 		t.Errorf("Expected %v got %v\n", expected, result)
@@ -22,7 +22,7 @@ func TestMedian(t *testing.T) {
 }
 
 func TestVariance(t *testing.T) {
-	result := Variance([]string{"19", "11", "15"}, 15)
+	result := Variance([]float64{19.0, 11.0, 15.0}, 15)
 	var expected float64 = 10.666666666666666
 	if result != expected {
 		t.Errorf("Error: expected %v got %v\n", expected, result)

@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"runtime"
 )
 
 func main() {
@@ -23,8 +24,15 @@ func main() {
 		os.Stdout.WriteString("Error: " + fileName + " is empty")
 		return
 	}
+	var numStr []string
 
-	numStr := splitString(string(content), "\r\n")
+	ops := runtime.GOOS
+	switch ops {
+	case "windows":
+		numStr = splitString(string(content), "\r\n")
+	case "linux":
+		numStr = splitString(string(content), "\n")
+	}
 
 	numStr = sortList(numStr)
 	numbers := toFloat(numStr)
@@ -41,9 +49,6 @@ func main() {
 	os.Stdout.WriteString(Itoa(int(variance)) + "\n")
 	os.Stdout.WriteString("Standard Deviation: ")
 	os.Stdout.WriteString(Itoa(int(stdDev)) + "\n")
-	// fmt.Println(stdDev)
-	// fmt.Println(variance)
-	// handleStats(numbers)
 }
 
 func splitString(s string, sep string) []string {
@@ -69,9 +74,6 @@ func toFloat(a []string) []float64 {
 	}
 	return result
 }
-
-// func handleStats(a []string) {
-// }
 
 func Average(numbers []float64) float64 {
 	var result float64
@@ -120,7 +122,6 @@ func Variance(a []float64, mean float64) float64 {
 }
 
 func standardDev(variance float64) float64 {
-	// n := int(variance)
 	var guess float64 = variance / 2.0
 	for i := 0; i < 10; i++ {
 		guess = (guess + variance/guess) / 2.0

@@ -7,21 +7,21 @@ import (
 
 func main() {
 	if len(os.Args) != 2 {
-		os.Stdout.WriteString("Error: please provide the required arguments")
+		os.Stdout.WriteString("Error: please provide the required arguments\n")
 		return
 	}
 	fileName := os.Args[1]
 	if fileName != "data.txt" {
-		os.Stdout.WriteString("Error: please provide the correct file")
+		os.Stdout.WriteString("Error: please provide the correct file\n")
 		return
 	}
 	content, err := os.ReadFile(fileName)
 	if err != nil {
-		os.Stdout.WriteString("Error: unable to read " + fileName + " content")
+		os.Stdout.WriteString("Error: unable to read " + fileName + " content\n")
 		return
 	}
 	if len(content) == 0 {
-		os.Stdout.WriteString("Error: " + fileName + " is empty")
+		os.Stdout.WriteString("Error: " + fileName + " is empty\n")
 		return
 	}
 	var numStr []string
@@ -42,13 +42,21 @@ func main() {
 	variance := Variance(numbers, mean)
 	stdDev := standardDev(variance)
 	os.Stdout.WriteString("Average: ")
-	os.Stdout.WriteString(Itoa(int(mean)) + "\n")
+	os.Stdout.WriteString(Itoa(round(mean)) + "\n")
 	os.Stdout.WriteString("Median: ")
-	os.Stdout.WriteString(Itoa(int(median)) + "\n")
+	os.Stdout.WriteString(Itoa(round(median)) + "\n")
 	os.Stdout.WriteString("Variance: ")
-	os.Stdout.WriteString(Itoa(int(variance)) + "\n")
+	os.Stdout.WriteString(Itoa(round(variance)) + "\n")
 	os.Stdout.WriteString("Standard Deviation: ")
-	os.Stdout.WriteString(Itoa(int(stdDev)) + "\n")
+	os.Stdout.WriteString(Itoa(round(stdDev)) + "\n")
+}
+
+func round(f float64) int {
+	if f < 0 {
+		return int(f - 0.5)
+	} else {
+		return int(f + 0.5)
+	}
 }
 
 func splitString(s string, sep string) []string {

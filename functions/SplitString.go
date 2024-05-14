@@ -1,5 +1,6 @@
 package functions
 
+// Split strings based on provided pattern
 func SplitString(s string, sep string) []string {
 	result := []string{}
 	token := ""

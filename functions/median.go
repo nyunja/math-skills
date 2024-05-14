@@ -1,5 +1,6 @@
 package functions
 
+// Calculate the median of list of numbers
 func Median(a []float64) float64 {
 	var median float64
 	if len(a)%2 == 0 {

@@ -2,6 +2,7 @@ package functions
 
 import "os"
 
+// Print the solutions to the terminal
 func HandleCalculation(numStr []string) {
 	numStr = SortList(numStr)
 	numbers := ToFloat(numStr)

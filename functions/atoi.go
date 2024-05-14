@@ -2,6 +2,7 @@ package functions
 
 import "os"
 
+// Convert string to integer
 func Atoi(s string) int {
 	result := 0
 	sign := 1

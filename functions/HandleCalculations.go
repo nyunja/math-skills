@@ -20,7 +20,7 @@ func HandleCalculation(numStr []string) {
 	os.Stdout.WriteString("Median: ")
 	os.Stdout.WriteString(Itoa(round(median)) + "\n")
 	os.Stdout.WriteString("Variance: ")
-	os.Stdout.WriteString(fmt.Sprintf("%f\n",(round(variance))))
+	os.Stdout.WriteString(Itoa(round(variance)))
 	os.Stdout.WriteString("Standard Deviation: ")
 	os.Stdout.WriteString(Itoa(round(stdDev)) + "\n")
 }

@@ -1,9 +1,5 @@
 package functions
 
-import (
-	"fmt"
-)
-
 // Calculate the variance of number
 func Variance(a []float64, mean float64) float64 {
 	var total float64
@@ -14,6 +10,5 @@ func Variance(a []float64, mean float64) float64 {
 		total += numSq
 	}
 	result = total / float64(len(a))
-	fmt.Println(result)
 	return result
 }

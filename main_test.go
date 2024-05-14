@@ -52,5 +52,5 @@ func TestStdDev(t *testing.T) {
 		t.Errorf("Error: expected %v got %v\n", expected, result)
 		t.Errorf("Try again")
 		return
-	}variance
+	}
 }

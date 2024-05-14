@@ -2,6 +2,7 @@ package functions
 
 import "os"
 
+// Convert string values to float64
 func ToFloat(a []string) []float64 {
 	var result []float64
 	for _, num := range a {

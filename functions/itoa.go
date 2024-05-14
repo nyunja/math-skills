@@ -1,5 +1,6 @@
 package functions
 
+// Convert integer to string
 func Itoa(n int) string {
 	result := ""
 	sign := ""

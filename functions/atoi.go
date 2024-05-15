@@ -34,10 +34,9 @@ func Atoi(s string) int {
 				result = result*10 + int(n-'0')
 			}
 		} else {
-			os.Stdout.WriteString("Error: " + s + " is an invalid number\n")
-			os.Exit(0)
+			sign = -1
+			result = 9223372036854775807
 		}
-
 	}
 	return result * sign
 }

@@ -10,7 +10,7 @@ This program is designed to perform basic statistical analysis on a dataset prov
 
 1. Clone or download the repository to your local machine.
 ```bash
-git clone https://learn.zone01kisumu.ke/git/nyunja/math-skills.git
+git clone https://github.com/nyunja//math-skills.git
 ```
 2. Navigate to the directory containing the program files.
 ```bash

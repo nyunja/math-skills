@@ -6,5 +6,6 @@ func StandardDeviation(variance float64) float64 {
 	for i := 0; i < 10; i++ {
 		guess = (guess + variance/guess) / 2.0
 	}
+	// fmt.Printf("stdDeviation: %0.f\n", guess)
 	return guess
 }

@@ -44,7 +44,6 @@ func main() {
 	case "linux":
 		numStr = functions.SplitString(string(content), "\n")
 	}
-
 	// Call function to handle calculation
 	functions.HandleCalculation(numStr)
 }

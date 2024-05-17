@@ -9,6 +9,8 @@ func SplitString(s string, sep string) []string {
 			result = append(result, token)
 			token = ""
 			i = i + len(sep) - 1
+		} else if i == len(s)-len(sep) && s[i:i+len(sep)] == sep {
+			continue
 		} else {
 			token += string(s[i])
 		}

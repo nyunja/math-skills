@@ -8,8 +8,13 @@ import (
 // Print the solutions to the terminal
 func HandleCalculation(numStr []string) {
 	numStr = SortList(numStr)
+	// fmt.Printf("%q\n", numStr)
+	// fmt.Println("sorted ", numStr)
+	// fmt.Println(len(numStr))
+
 	numbers := ToFloat(numStr)
-	// fmt.Println(numbers[0] * 10)
+	// fmt.Println("floated ", numbers)
+	// fmt.Println(len(numbers))
 
 	mean := Average(numbers)
 	median := Median(numbers)

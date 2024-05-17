@@ -10,7 +10,7 @@ This program is designed to perform basic statistical analysis on a dataset prov
 
 1. Clone or download the repository to your local machine.
 ```bash
-git clone https://learn.zone01kisumu.ke/git/nyunja/math-skills.git
+git clone https://github.com/nyunja//math-skills.git
 ```
 2. Navigate to the directory containing the program files.
 ```bash
@@ -40,4 +40,4 @@ Contributions are welcome! If you encounter any issues or have suggestions for i
 
 ## License
 
-This program is licensed under the [MIT License](LICENSE).
+This program is licensed under the [MIT License](https://github.com/nyunja/math-skills/blob/main/LICENSE.txt).

@@ -29,5 +29,4 @@ func HandleCalculation(numStr []string) {
 	//os.Stdout.WriteString(Itoa(round(variance)))
 	//os.Stdout.WriteString("Standard Deviation: ")
 	fmt.Printf("Standard Deviation: %0.f\n", float64(stdDev))
-	//os.Stdout.WriteString(Itoa(round(stdDev)) + "\n")
 }

@@ -40,4 +40,4 @@ Contributions are welcome! If you encounter any issues or have suggestions for i
 
 ## License
 
-This program is licensed under the [MIT License](LICENSE).
+This program is licensed under the [MIT License](https://github.com/nyunja/math-skills/blob/main/LICENSE.txt).
